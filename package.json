@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "new-jwt-key": "jose newkey -s 256 -t oct -a HS512 -b"
   },
   "dependencies": {
     "faunadb": "^4.2.0",
