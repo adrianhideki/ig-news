@@ -4,7 +4,8 @@ import { stripe } from "../../../services/stripe";
 
 export async function saveSubscription(
   subscriptionId: string,
-  customerId: string
+  customerId: string,
+  createAction: boolean = false
 ) {
   // Buscar o usuário no banco do fauna com o ID do { customer ID }
   // Salvar os dados da subscription no faunadb
@@ -21,9 +22,24 @@ export async function saveSubscription(
     userId: userRef,
     status: subscription.status,
     price_id: subscription.items.data[0].price.id,
-  }
+  };
 
-  await fauna.query(
-    q.Create(q.Collection("subscriptions"), { data: subscriptionData }),
-  );
+  if (createAction) {
+    await fauna.query(
+      q.Create(q.Collection("subscriptions"), { data: subscriptionData })
+    );
+  } else {
+    await fauna.query(
+      // replace ou update atualizam dados no fauna
+      // o update atualiza um campo dentro do registro
+      // o replace substitui o document por completo
+      q.Replace(
+        q.Select(
+          "ref",
+          q.Get(q.Match(q.Index("subscription_by_id"), subscription.id))
+        ),
+        { data: subscriptionData }
+      )
+    );
+  }
 }
