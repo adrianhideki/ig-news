@@ -9,6 +9,7 @@
     "new-jwt-key": "jose newkey -s 256 -t oct -a HS512 -b"
   },
   "dependencies": {
+    "@prismicio/client": "^4.0.0",
     "@stripe/stripe-js": "^1.15.0",
     "axios": "^0.21.1",
     "faunadb": "^4.2.0",
