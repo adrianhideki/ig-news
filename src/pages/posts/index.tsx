@@ -1,0 +1,40 @@
+import Head from "next/head";
+import styles from "./styles.module.scss";
+
+export default function Posts() {
+  return (
+    <>
+      <Head>
+        <title>Posts | Ignews</title>
+      </Head>
+      <main className={styles.container}>
+        <div className={styles.posts}>
+          <a href="#">
+            <time>22 de maio de 2021</time>
+            <strong>Creating a Monorepo with Lerna e Yarn Workspaces</strong>
+            <p>
+              In ths guide, you will learn hot to create a Monorepo to manage
+              multiple packages with a shared build, test, and release process.
+            </p>
+          </a>
+          <a href="#">
+            <time>22 de maio de 2021</time>
+            <strong>Creating a Monorepo with Lerna e Yarn Workspaces</strong>
+            <p>
+              In ths guide, you will learn hot to create a Monorepo to manage
+              multiple packages with a shared build, test, and release process.
+            </p>
+          </a>
+          <a href="#">
+            <time>22 de maio de 2021</time>
+            <strong>Creating a Monorepo with Lerna e Yarn Workspaces</strong>
+            <p>
+              In ths guide, you will learn hot to create a Monorepo to manage
+              multiple packages with a shared build, test, and release process.
+            </p>
+          </a>
+        </div>
+      </main>
+    </>
+  );
+}
