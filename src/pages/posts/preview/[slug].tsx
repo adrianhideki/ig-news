@@ -50,9 +50,23 @@ export default function PostPreview({ post }: PostPreviewProps) {
   );
 }
 
+// só existe em páginas que recebem um parâmetro
 export const getStaticPaths = () => {
   return {
-    paths: [],
+    // no build carrega a página estática
+    paths: [
+      // recebe quais slugs são gerados estáticamente no build
+      // {
+      //   params: { slug: 'valor-do-slug' }
+      // }
+    ],
+    // pode receber true, false ou blocking
+    // true: quando alguém acessa um post que ainda não foi gerado estático
+    // ele carrega pelo browser e depois carrega o conteúdo após terminar o request
+    // causa layout shift e pode impactar o SSO
+    // false: não busca um post que não está gerado estáticamente
+    // blocking: ele tenta carregar na camada do next, só mostra o html quando termina
+    // de carregar todo o conteúdo
     fallback: "blocking",
   };
 };
