@@ -1,17 +1,24 @@
-import { SignInButton } from '../SignInButton';
-import styles from './styles.module.scss';
+import { SignInButton } from "../SignInButton";
+import styles from "./styles.module.scss";
+import React from "react";
+import { ActiveLink } from "../ActiveLink";
 
-export function Header () {
+export function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.contentContainer}>
         <img src="/images/logo.svg" alt="logo" />
         <nav>
-          <a className={styles.active}>Home</a>
-          <a>Posts</a>
+          <ActiveLink href="/" activeClassName={styles.active}>
+            <a>Home</a>
+          </ActiveLink>
+
+          <ActiveLink href="/posts" activeClassName={styles.active}>
+            <a>Posts</a>
+          </ActiveLink>
         </nav>
 
-        <SignInButton/>
+        <SignInButton />
       </div>
     </header>
   );
