@@ -29,6 +29,10 @@ describe("Header component", () => {
       <Header />
     );
 
+    // gera uma url para visualizar o teste
+    // mostra como encontrar um elemento em tela
+    screen.logTestingPlaygroundURL();
+
     // verificando se tem um texto home na dom
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Posts")).toBeInTheDocument();
