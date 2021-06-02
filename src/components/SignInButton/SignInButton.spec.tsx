@@ -24,7 +24,7 @@ describe("SignInButton component", () => {
         email: 'john.doe@example.com',
       },
       expires: 'fake-expires',
-    }, true]);
+    }, false]);
 
     render(<SignInButton />);
 
